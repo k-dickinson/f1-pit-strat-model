@@ -60,6 +60,7 @@ FastF1 pulls full race data for each event, including stint data, lap times, com
 
 - Visual feature importance
 
+Code available [here!](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/main.py)
 ---
 
 ## Future Improvements
