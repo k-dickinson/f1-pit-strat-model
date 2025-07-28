@@ -1,86 +1,98 @@
 ## **F1 Pit Stop Strategy Predictor**
 
-This project predicts when a Formula 1 car will pit based on historical race data.  
-It’s built using Python and FastF1, with a LightGBM model trained to forecast the lap the racer's next pit stop will occur on.  
-The goal is to uncover patterns in race strategy and improve predictive modeling in motorsport.
+This project forecasts how many laps remain before a Formula 1 driver makes their next pit stop, based on detailed race telemetry.  
+It uses Python and FastF1 to collect race data, processes it with pandas, and trains a LightGBM regression model to predict the number of laps until the next pit stop.
 
 ---
 
 ## Project Goals
 
-- Predict the lap the racer's next pit stop will occur on  
-- Explore how tire compounds, stint behavior, and track-specific patterns influence pit strategy  
-- Build a model that generalizes across different races and teams
+- Predict **LapsToNextPit** — a dynamic label generated from historical pit timing  
+- Investigate how tire compound, stint phase, track status, and lap behavior influence pitting  
+- Ensure model generalizes across multiple drivers and events without race-specific leakage
 
 ---
 
 ## Tech Stack
 
-- **Data:** FastF1, pandas  
-- **Modeling:** LightGBM, scikit-learn  
-- **Visualization:** matplotlib  
+| Category         | Tools Used            |
+|------------------|------------------------|
+| Data Collection  | FastF1, pandas         |
+| Modeling         | LightGBM, scikit-learn |
+| Evaluation       | MAE, ±1/2/3 lap accuracy |
+| Visualization    | matplotlib             |
 
 ---
 
-## 📊 Methodology
+## Methodology
 
-### Data Collection
+### Data Loading
 
-FastF1 pulls full race data for each event, including stint data, lap times, compound types, and more.
+- Utilizes FastF1 cache structure to load lap-level data per session  
+- Supports automated ingestion across multiple races  
 
 ### Feature Engineering
 
-- Current tire compound  
-- Stint number  
-- Is current lap time a PB? 
-- Lap Number
-- Track Status (flags/safety car, etc.)
+- Encodes tire compound as categorical codes  
+- Captures track status flags and personal best lap indicators  
+- Extracts stint and lap context for predictive signals
 
-### Target Variable
+### Label Generation
 
-- The lap number at which the next pit stop will occur
+- For each driver, computes how many laps until their next recorded pit  
+- Dynamically creates `LapsToNextPit` by searching forward from current lap
 
-### Train/Test Strategy
+### Training Strategy
 
-- Train/test split is done by **race**, not by lap, to avoid information leakage  
-- Evaluated with MAE, % of lap predictions guessed exactly correct, and % of predictions within ±1, 2, and 3 laps
+- Race-level split: training and testing on distinct grand prix events to prevent leakage  
+- LightGBM model trained with early stopping and regularization
 
-### Overfitting Mitigation
+### Evaluation Metrics
 
-- Initial model severely overfit due to race-specific leakage and lap-level splitting  
-- Rebuilt pipeline from scratch with proper race-level train/test split  
-- Feature set pruned to remove variables that implicitly encoded race identity  
-- **Training MAE:** 3.455 laps vs. **Testing MAE:** 3.900 laps — minimal performance gap suggests strong generalization  
+- MAE on training and test sets  
+- % of predictions exactly correct  
+- % within ±1, ±2, ±3 laps  
+- Comparison to naive baseline using mean prediction
 
 ---
 
-## 📈 Sample Output
+### Overfitting Mitigation
+
+- Race-level splitting prevents leakage across laps in the same event  
+- Feature pruning removes indirect race identifiers to boost generalization  
+- Early stopping and regularization parameters in LightGBM reduce model complexity  
+- Model performance is monitored across train/test splits to ensure minimal gap (Train MAE ≈ 3.455 vs. Test MAE ≈ 3.900)
+
+---
+
+## Sample Visualization
 
 ![Sample Model Output](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/F1_sample_output.png)
 
-- Visual feature importance
+- Left: Feature importance from LightGBM  
+- Right: Evaluation summary including MAE and lap-level prediction accuracy
 
-Code available [here!](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/main.py)
+code available [here!](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/main.py)
 ---
 
 ## Future Improvements
 
-- Add circuit-level metadata (e.g., average pit delta, tire degradation curves)  
-- Train on multi-year data for more robustness  
-- Try sequence models (e.g. LSTM) for longer-term strategy prediction  
-- Build a real-time race simulation overlay
+- Integrate metadata per circuit: pit delta, degradation curves, surface type  
+- Expand dataset to include multiple seasons for robustness  
+- Explore time-aware models (e.g. LSTM, Transformers)  
+- Build real-time simulation interface for strategy overlays
 
 ---
 
-## Why This Matters
+## Why It Matters
 
-Modeling pit strategies is one of the hardest problems in motorsport analytics.  
-It combines tactical planning, tire wear, race conditions, and even driver style.  
-This project shows how machine learning can help decode part of that complexity.
+F1 pit strategy prediction is a highly complex task influenced by tire behavior, safety car triggers, driver style, and track dynamics.  
+This project demonstrates that even with minimal inputs, machine learning can anticipate strategic behavior with surprising accuracy.
 
 ---
 
-## 📬 Contact
+## Contact
 
-- Built by [@k-dickinson](https://github.com/k-dickinson) – always open to feedback or ideas!
-- Instagram: [@Quant_Kyle](https://instagram.com/quant_kyle)
+- Built by [@k-dickinson](https://github.com/k-dickinson)  
+- Instagram: [@Quant_Kyle](https://instagram.com/quant_kyle)  
+- Feedback, collaborations, and race insights welcome!
