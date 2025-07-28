@@ -58,8 +58,7 @@ FastF1 pulls full race data for each event, including stint data, lap times, com
 
 ![Sample Model Output](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/F1_sample_output.png)
 
-- Visual feature importance  
-- Line plot comparing predicted vs actual pit lap
+- Visual feature importance
 
 ---
 
