@@ -43,12 +43,14 @@ FastF1 pulls full race data for each event, including stint data, lap times, com
 ### Train/Test Strategy
 
 - Train/test split is done by **race**, not by lap, to avoid information leakage  
-- Evaluated with MAE and % of predictions within ±1 lap
+- Evaluated with MAE, % of lap predictions guessed exactly correct, and % of predictions within ±1,2, and 3 laps
 
 ### Overfitting Mitigation
 
-- Initially overfit due to non-independent test laps  
-- Now split by race and pruned features to reduce race-specific bias
+- Initial model severely overfit due to race-specific leakage and lap-level splitting  
+- Rebuilt pipeline from scratch with proper race-level train/test split  
+- Feature set pruned to remove variables that implicitly encoded race identity  
+- **Training MAE:** 3.455 laps vs. **Testing MAE:** 3.900 laps — minimal performance gap suggests strong generalization  
 
 ---
 
