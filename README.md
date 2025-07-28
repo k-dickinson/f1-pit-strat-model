@@ -80,5 +80,5 @@ This project shows how machine learning can help decode part of that complexity.
 
 ## 📬 Contact
 
-Built by [@k-dickinson](https://github.com/k-dickinson) – always open to feedback or ideas!
-Instagram: [@Quant_Kyle](https://instagram.com/quant_kyle)
+- Built by [@k-dickinson](https://github.com/k-dickinson) – always open to feedback or ideas!
+- Instagram: [@Quant_Kyle](https://instagram.com/quant_kyle)
