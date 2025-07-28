@@ -1,13 +1,12 @@
-## **F1 Pit Stop Strategy Predictor**
+## 🏎️ **F1 Pit Stop Strategy Predictor**
 
-This project forecasts how many laps remain before a Formula 1 driver makes their next pit stop, based on detailed race telemetry.  
-It uses Python and FastF1 to collect race data, processes it with pandas, and trains a LightGBM regression model to predict the number of laps until the next pit stop.
+This project forecasts how many laps remain before a Formula 1 driver makes their next pit stop, based on detailed race telemetry. Rather than predicting the absolute lap number of a pit stop, it estimates the _remaining laps_ until a pit occurs using historical data and driver-specific race progression. It uses Python and FastF1 to collect race data, processes it with pandas, and trains a LightGBM regression model to predict `LapsToNextPit`.
 
 ---
 
 ## Project Goals
 
-- Predict **LapsToNextPit** — a dynamic label generated from historical pit timing  
+- Predict **LapsToNextPit** — how many laps remain before the driver pits again  
 - Investigate how tire compound, stint phase, track status, and lap behavior influence pitting  
 - Ensure model generalizes across multiple drivers and events without race-specific leakage
 
@@ -73,6 +72,7 @@ It uses Python and FastF1 to collect race data, processes it with pandas, and tr
 - Right: Evaluation summary including MAE and lap-level prediction accuracy
 
 code available [here!](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/main.py)
+
 ---
 
 ## Future Improvements
@@ -86,8 +86,7 @@ code available [here!](https://github.com/k-dickinson/f1-pit-strat-model/blob/ma
 
 ## Why It Matters
 
-F1 pit strategy prediction is a highly complex task influenced by tire behavior, safety car triggers, driver style, and track dynamics.  
-This project demonstrates that even with minimal inputs, machine learning can anticipate strategic behavior with surprising accuracy.
+F1 pit strategy prediction is a highly complex task influenced by tire behavior, safety car triggers, driver style, and track dynamics. This project demonstrates that even with minimal inputs, machine learning can anticipate strategic behavior with surprising accuracy.
 
 ---
 
