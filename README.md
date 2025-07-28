@@ -1,4 +1,4 @@
-**F1 Pit Stop Strategy Predictor**
+## **F1 Pit Stop Strategy Predictor**
 
 This project predicts when a Formula 1 car will pit based on historical race data.  
 It’s built using Python and FastF1, with a LightGBM model trained to forecast the lap the racer's next pit stop will occur on.  
