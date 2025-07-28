@@ -43,7 +43,7 @@ FastF1 pulls full race data for each event, including stint data, lap times, com
 ### Train/Test Strategy
 
 - Train/test split is done by **race**, not by lap, to avoid information leakage  
-- Evaluated with MAE, % of lap predictions guessed exactly correct, and % of predictions within ±1,2, and 3 laps
+- Evaluated with MAE, % of lap predictions guessed exactly correct, and % of predictions within ±1, 2, and 3 laps
 
 ### Overfitting Mitigation
 
