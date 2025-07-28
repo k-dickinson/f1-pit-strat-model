@@ -1,4 +1,4 @@
-🏎️ **F1 Pit Stop Strategy Predictor**
+**F1 Pit Stop Strategy Predictor**
 
 This project predicts when a Formula 1 car will pit based on historical race data.  
 It’s built using Python and FastF1, with a LightGBM model trained to forecast the lap the racer's next pit stop will occur on.  
@@ -6,7 +6,7 @@ The goal is to uncover patterns in race strategy and improve predictive modeling
 
 ---
 
-## 📌 Project Goals
+## Project Goals
 
 - Predict the lap the racer's next pit stop will occur on  
 - Explore how tire compounds, stint behavior, and track-specific patterns influence pit strategy  
@@ -14,7 +14,7 @@ The goal is to uncover patterns in race strategy and improve predictive modeling
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 - **Data:** FastF1, pandas  
 - **Modeling:** LightGBM, scikit-learn  
@@ -54,14 +54,14 @@ FastF1 pulls full race data for each event, including stint data, lap times, com
 
 ## 📈 Sample Output
 
-PASTE PICTURE HERE!!!!!!!!!!!
+![Sample Model Output](https://github.com/k-dickinson/f1-pit-strat-model/blob/main/F1_sample_output.png)
 
 - Visual feature importance  
 - Line plot comparing predicted vs actual pit lap
 
 ---
 
-## 📦 Future Improvements
+## Future Improvements
 
 - Add circuit-level metadata (e.g., average pit delta, tire degradation curves)  
 - Train on multi-year data for more robustness  
@@ -70,23 +70,11 @@ PASTE PICTURE HERE!!!!!!!!!!!
 
 ---
 
-## 🧠 Why This Matters
+## Why This Matters
 
 Modeling pit strategies is one of the hardest problems in motorsport analytics.  
 It combines tactical planning, tire wear, race conditions, and even driver style.  
 This project shows how machine learning can help decode part of that complexity.
-
----
-
-## 📁 Repo Structure
-
-```bash
-📂 fastf1_cache/           # FastF1 cached data per session  
-📜 train_model.py  
-📜 preprocess.py  
-📜 main.py  
-📜 README.md  
-```
 
 ---
 
