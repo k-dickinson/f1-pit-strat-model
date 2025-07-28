@@ -171,10 +171,8 @@ ax2.text(0.01, 0.98, metrics_text, fontsize=14, va='top', ha='left', bbox=dict(f
 plt.tight_layout()
 plt.show()
 
-# 10. SAVE MODEL (optional)
-# model.save_model('pitstop_lgbm.txt')
 
-# 11. NOTES
+# 10. NOTES
 # - This is a minimal pipeline. For production, add more features, error handling, and experiment tracking.
 # - For more races, expand RACES and automate splits.
 # - For live prediction, use only laps up to current lap for each car.
